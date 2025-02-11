@@ -1,0 +1,699 @@
+:root{ /* most used variables*/
+    --maincolor: #490213;
+    --black: #000000;
+    --white: #ffffff;
+    --gold: #d4af37; 
+    --primary-font: 'Playfair Display', serif;
+    --secondary-font: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body{ 
+    background-color: var(--maincolor);
+    font-style: var(--primary-font);
+    color: #000000;
+    padding-top: 80px; 
+}
+
+.navbar{ /* navbar */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 30px;
+    background-color: var(--maincolor);
+    position: fixed; /* Keeps navbar fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /*to stay on top of other elements*/
+    border-bottom: 1px solid var(--gold);
+}
+
+.navbar .logo{ 
+    justify-self: flex-start;
+    margin-left: 0px;
+    font-size: 40px;
+    color: var(--gold);
+    font-style: italic;
+    font-weight: bold;
+    cursor: pointer;
+  
+}
+
+.navbar .navigation{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    list-style: none;
+    flex-grow: 2; /* it takes all the space left*/
+}
+
+ul li a {
+    color: var(--white);
+    text-decoration: none;
+    text-transform: uppercase; /* home --> HOME*/
+    font-size: 30x;
+    font-family: var(--secondary-font);
+    cursor: pointer;
+    transition: color 0.4s ease,
+                box-shadow 0.4s ease;
+}
+ul li a:hover{
+ color: #d4af37;
+ background-color: transparent;
+ box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.562) ;
+ /* val1: is to the right 
+    val2 is down
+    val3 is the blur
+    val 4 is the color we want*/
+}
+ul li a:active{ /*when click it gets low opacity*/
+opacity: 0.5;
+}
+.book-btn {
+    flex: 1; /* Pushes button to the right without overflowing */
+    display: flex;
+    justify-content: flex-end; /* Ensures button stays aligned */
+}
+.book-btn button {
+    background-color: var(--maincolor);
+    color: var(--gold);
+    text-transform: capitalize;
+    border: solid 1px;
+    width: 200px;
+    height: 60px;
+    padding: 10px 30px;
+    margin: 10px 40px;
+    font-size: 18px;
+    font-family: var(--secondary-font);
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+
+.book-btn button a {
+    text-decoration: none;
+    color: inherit; /* Let the buttons color control the links color */
+}
+
+
+.book-btn button:hover {
+    background-color: var(--gold);
+    color: var(--maincolor);
+}
+
+/* Active State */
+.book-btn button:active {
+    opacity: 0.6;
+}
+
+
+/*Home sect styles*/
+#home{
+    position: relative;
+    width: 100%;
+    height: 100vh; /*sreen height*/
+}
+
+.back-img{ /*background image */
+ background-image: url(./pictures/chef-bg.jpg);
+ background-size:cover ;/* so the image covers the entire container */
+ background-position: center;
+  background-repeat: no-repeat; /*to prevent the image from repeating*/
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Place the image behind other elements */
+  opacity: 0.2; /* Make the image look faded */
+ 
+
+}
+.container{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+align-items: center;
+max-width: 1200px;
+margin: 0px auto;
+padding: 20px 20px;
+justify-content: space-between;
+}
+
+.home-txt{ /*setting the animation for the text*/
+    animation-name: text-appears; /*the name of the animation*/
+    animation-delay: 1s; /* it waits before starting the animation to wait for the image */
+    animation-duration: 1s;
+    animation-iteration-count: 1; /* to run it once*/
+    animation-timing-function: linear; /*constant speed */
+    
+}
+.home-txt p{
+    color: white;
+    font-family: var(--primary-font);
+    font-size: 20px;
+}
+.home-txt h2{
+    color: var(--gold);
+    font-family: var(--primary-font);
+    font-weight: bold;
+    font-size: 38px;
+}
+/*.home-meal{   
+    flex: 1;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.home-meal img{
+    width: 250px;
+    height: auto;
+    margin: 50px 0px;
+}*/
+.home-chef {
+    flex: 1;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    animation-name: image-appears;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+.home-chef img{
+    width: 370px;
+    height: auto;
+    border-radius: 30px;
+    /*margin: 50px 50px;*/
+    margin-top: 50px;
+    margin-left: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--gold);
+    border-radius: 30px;
+}
+.home-txt, .home-chef {
+opacity: 0; 
+animation-fill-mode: forwards; /*to ensure that the pic and the text wont desappear after the animation*/
+}
+
+@keyframes image-appears{
+    0%{
+      opacity: 0;
+      transform: translateY(50px);
+    }100%{
+       opacity: 1;
+       transform: translateY(0px);
+    }
+}
+
+@keyframes text-appears{
+    0%{
+        opacity: 0;
+        transform: translateY(100px); /*it comes up*/
+      }100%{
+         opacity: 1;
+         transform: translateY(0px);
+      }
+}
+/*about section*/
+#about{
+    position: relative;
+    width: 100%;
+    height: 100vh; /*sreen height*/
+    background-color: var(--gold);
+}
+.about-container{
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+}
+.about-imgs{
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  gap: 10px;
+}
+.about-imgs #img1{
+width: 300px;
+height: auto;
+margin-top: 10px;
+padding-left: 20px;
+transition: transform 0.4s ease;
+}
+.about-imgs #img1:hover{
+transform: scale(1.05,1.05);
+
+}
+.about-imgs #img2{
+margin-top: 90px;
+ width: 240px;
+ height: 240px;
+ transition: transform 0.4s ease;
+}
+.about-imgs #img2:hover{
+    transform: scale(1.05,1.05);
+    
+ }
+.about-quote{
+ display: flex;
+ flex-direction: column;
+ position: absolute;
+ bottom: 90px;
+ width: 350px;
+ left:250px;
+ background-color: var(--maincolor);
+ padding: 5px 20px;
+ border-radius: 20px;
+}
+.about-quote p{
+    
+    font-family: var(--primary-font);
+    font-size: 16.5px;
+    font-style: italic;
+    color: var(--white);
+    word-spacing: 5px;
+}
+/*.about-quote h6{
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--white);
+}*/
+.about-text{
+display: flex;
+flex-direction: column;
+padding-top: 10px;
+padding-left: 200px;
+padding-bottom: 10px;
+padding-right: 20px;
+
+
+}
+.about-text h5{
+ font-size: 15px;
+ font-family: var(--secondary-font);
+ margin-bottom: 5px;
+ text-transform: uppercase;
+}
+.about-text h2{
+    font-size: 35px;
+    font-weight: bolder;
+    font-family: var(--primary-font);
+    margin-bottom: 8px;
+    text-transform: capitalize;
+}
+.about-text p{
+font-size: 18px;
+font-family: var(--primary-font);
+margin-top: 5px;
+word-spacing: 3px;
+}
+
+/*courses*/
+#courses{
+
+    position: relative;
+    width: 100%;
+    height: 100vh; /*screen height*/
+    
+}
+.course-conatiner{
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+padding: 10px 20px;
+overflow: hidden;
+
+}
+.course-text h6{
+  font-size: 18px;
+  font-family: var(--secondary-font);
+  color: var(--white);
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.course-text h2{
+    font-size: 40px;
+    font-family: var(--primary-font);
+    color: var(--gold);
+    padding-top: 5px;
+    font-weight: bold;
+    max-width: 600px;
+    margin: 0 auto;
+  
+  }
+  .course-text p{
+    font-size: 15px;
+    font-family: var(--secondary-font);
+    color: var(--white);
+    padding-top: 5px;
+    max-width: 700px;
+    line-height: 1.6;
+  
+  }
+.course-items{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  gap: 20px;
+  position: relative;
+  
+}
+/*a revoir*/
+.item {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.item img {
+width: 250px;
+height: 450px;
+object-fit: cover;
+transition: opacity 0.3s ease;
+cursor: pointer;
+}
+
+.item img:hover{
+    opacity: 0.4;
+}
+
+ .item h4 {
+   font-size: 22px;
+   font-family: var(--secondary-font);
+    color: var(--gold);
+    text-align: center;
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+   
+ }
+    
+    .item p {
+        font-size: 16px;
+        font-family: var(--secondary-font);
+        color: var(--white);
+        text-align: center;
+        max-width: 350px;
+        margin: 5px auto;
+        line-height: 1.6;
+        opacity: 0.9;
+       
+    }
+    
+/* book a table*/
+#book-table{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    
+}
+.book-container{
+    position: relative;
+   display: flex;
+   flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #d4af37;
+  
+  padding: 30px 30px; 
+  height: 100vh;
+}
+.book-form{
+    display: flex;
+   flex-direction: column;
+   align-items: center;  /* Centers everything inside */
+   text-align: center;
+}
+.book-form h3{
+    font-size: 40px;
+    font-family: var(--primary-font);
+    text-transform: uppercase;
+    align-self: center;
+}
+.book-form input{
+    width: 290px;
+    height: 40px;
+    margin-right: 30px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    border-style: none;
+    text-align: center;
+    font-size: 16px;
+    text-transform: capitalize;
+    cursor: text;
+    transition: box-shadow 0.4s linear;
+                /*transform 0.4s linear;*/
+}
+.book-form input:hover{
+    box-shadow: 5px 5px 30px var(--maincolor);
+ /* transform: scale(1.05, 1.05) ;*/
+}
+
+.book-container .book-picture img{
+    width: 400px;
+    margin-left: 150px;
+    border-radius: 20px;
+    border: 1px solid var(--maincolor);
+}
+.book-container button {
+    width: 250px;
+    height: 40px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--maincolor);
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, transparent 50%, var(--maincolor) 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    color: var(--white);
+    cursor: pointer;
+    transition: 
+        background-position 0.5s linear, 
+        box-shadow 0.4s linear, 
+        color 0.4s linear,
+        transform 0.4s linear;
+}
+
+.book-container button:hover {
+    color: var(--black);
+    background-position: 0% 0; 
+    box-shadow: 7px 7px 20px var(--maincolor);
+    transform: scale(1.05, 1.05);
+}
+
+#footer {
+    background-color: var(--maincolor);
+    color: var(--white);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--gold);
+}
+
+.footer-container div {
+    flex: 1;
+    margin: 10px;
+}
+
+.footer-container h4 {
+    font-size: 20px;
+    color: var(--gold);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.footer-container p {
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: var(--secondary-font);
+}
+
+.footer-container button {
+    background-color: var(--gold);
+    color: var(--black);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-container button:hover {
+    background-color: var(--white);
+    color: var(--maincolor);
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.footer-bottom img {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+
+/*CONTACT PAGE*/
+
+#contact{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+.contact-main{
+    background-image: url(./pictures/contact-bg.jpg);
+ background-size:cover ;
+ background-position: center;
+  background-repeat: no-repeat; 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  z-index: -1; 
+  opacity: 0.2; 
+
+}
+/*
+.contact-text h2{
+   color: var(--black);
+   align-self: center;
+   margin: 150px 10px;
+   font-size: 50px;
+   font-family: var(--primary-font);
+}*/
+
+.contact-container{
+    display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+align-items: center;
+max-width: 1200px;
+margin: 30px auto;
+padding: 20px 20px;
+justify-content: space-between;
+}
+.contact-info{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin: 150px 10px;
+
+}
+.contact-info .contact-card{
+    border: 2px solid var(--maincolor);
+    padding: 20px 20px;
+    width: 250px;
+    background-color: var(--maincolor);
+    opacity: 0.8;
+    border-radius:20px ;
+    margin: 20px 10px;
+    transition: box-shadow 0.4s ease, opacity 0.4s ease;
+    text-align: center;
+}
+.contact-info .contact-card:hover{
+    box-shadow: 5px 5px 30px var(--gold);
+    opacity: 1;
+}
+
+/* Contact Form */
+.contact-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    height: auto;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 50px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    margin: 150px 30px;
+}
+
+
+.contact-form input {
+    width: 500px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+    text-transform: capitalize;
+    cursor: text;
+    transition: box-shadow 0.4s linear;
+}
+
+.contact-form input:hover {
+    box-shadow: 5px 5px 30px var(--maincolor);
+}
+.contact-form input:focus{
+    outline: none;
+}
+
+.contact-form button {
+    width: 250px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--maincolor);
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, transparent 50%, var(--maincolor) 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    color: var(--white);
+    cursor: pointer;
+    transition: 
+        background-position 0.5s linear, 
+        box-shadow 0.4s linear, 
+        color 0.4s linear,
+        transform 0.4s linear;
+}
+
+.contact-form button:hover {
+    color: var(--black);
+    background-position: 0% 0; 
+    box-shadow: 7px 7px 20px var(--maincolor);
+    transform: scale(1.05);
+}
+
